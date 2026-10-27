@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inquiry - Meghrup</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="inquiry.css">
+ <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #fef9f4, #fceee3, #f7e2d7);
+      color: #333;
+    }
+    a { text-decoration: none; color: inherit; }
+
+    .top-bar {
+      background: linear-gradient(to right, #f9f5ef, #f4e9dd);
+      padding: 10px 20px;
+      font-size: 14px;
+      color: #5a524c;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .top-bar .left {
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .top-bar .left > div {
+      display: inline-block;
+      padding-left: 100%;
+      animation: scroll-left 35s linear infinite;
+    }
+
+    @keyframes scroll-left {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+header.main-header {
+  background: linear-gradient(135deg, #fffefc, #fdf5ee, #f7e9dc);
+  padding: 12px 20px;
+  position: relative;
+  z-index: 1000;
+}
+
+
+
+    .main-header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+.logo img {
+  height: 70px;
+  width: 200px;
+  object-fit: contain;
+  transition: all 0.4s ease-in-out;
+  filter:
+    drop-shadow(0 6px 12px rgba(0, 0, 0, 0.4))    /* Thicker black shadow */
+    drop-shadow(0 0 10px rgba(255, 255, 255, 0.6)); /* Stronger white glow */
+  border-radius: 10px;
+  opacity: 0.85; /* Reduced opacity */
+}
+
+/* Glow on hover */
+.logo img:hover {
+  transform: scale(1.05);
+  filter:
+    drop-shadow(0 8px 16px rgba(0, 0, 0, 0.5))    /* Even thicker black shadow */
+    drop-shadow(0 0 20px rgba(255, 255, 255, 0.9)); /* Stronger white glow */
+  opacity: 1; /* Full opacity on hover */
+}
+
+@media (max-width: 992px) {
+  .logo img {
+  height: 60px !important;
+    width: 190px !important;
+  }
+}
+
+
+
+
+    nav.nav-menu {
+      display: none;
+    }
+
+    .sidebar-toggle {
+      font-size: 24px;
+      background: none;
+      border: none;
+      color: #a67c52;
+      display: block;
+    }
+
+    .mobile-sidebar {
+      position: fixed;
+      top: 0;
+      left: -100%;
+      width: 260px;
+      height: 100%;
+      background: linear-gradient(135deg, #fff5ec, #ffe7d1, #fbd6b4);
+      box-shadow: 2px 0 8px rgba(0, 0, 0, 0.15);
+      padding: 25px 18px;
+      z-index: 2500;
+      transition: left 0.3s ease-in-out;
+      overflow-y: auto;
+    }
+
+    .mobile-sidebar.active {
+      left: 0;
+    }
+
+    .mobile-sidebar .close-btn {
+      font-size: 24px;
+      cursor: pointer;
+      float: right;
+      color: #a67c52;
+      margin-bottom: 20px;
+    }
+
+    .mobile-sidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .mobile-sidebar li {
+      margin-bottom: 10px;
+    }
+
+    .mobile-sidebar li > a {
+      font-weight: 600;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #5a524c;
+      padding: 10px 12px;
+      border-radius: 6px;
+      background: white;
+    }
+
+    .mobile-sidebar li > a:hover {
+      background-color: #f4e9dd;
+    }
+
+    .dropdown-mobile {
+      display: none;
+      margin-left: 10px;
+      padding-left: 10px;
+      border-left: 2px solid #e6d5c0;
+    }
+
+    .dropdown-mobile.open {
+      display: block;
+    }
+
+    .dropdown-mobile a {
+      display: block;
+      padding: 6px 0;
+      font-weight: 400;
+      color: #5a524c;
+    }
+
+    .dropdown-mobile a:hover {
+      background-color: #e3d3c0;
+      color: #a67c52;
+      border-radius: 4px;
+      padding-left: 6px;
+    }  .dropdown-content a {
+  white-space: nowrap;   /* 🔥 MAIN FIX */
+}
+
+.dropdown-content {
+  min-width: 00px;   /* increase space */
+  width: max-content;        /* 🔥 AUTO WIDTH BASED ON CONTENT */
+  min-width: 200px;          /* minimum safety */
+  max-width: 350px; 
+  z-index: 999;
+}
+
+.dropdown-content a {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; /* if too long → show ... */
+  /* font-weight: 400; */
+}
+
+    /* DESKTOP MODE */
+    @media (min-width: 993px) {
+      .sidebar-toggle,
+      .mobile-sidebar {
+        display: none !important;
+      }
+
+      nav.nav-menu {
+        display: block;
+      }
+
+  nav.nav-menu ul {
+  display: flex;
+  list-style: none;
+  gap:12px;
+  margin: 0;
+  padding: 0;
+  font-weight: 600;
+  padding: 0px 50px;
+  font-size: 15px;
+  color: #5a524c;
+  align-items: center;
+}
+
+      nav.nav-menu ul li {
+        position: relative;
+        cursor: pointer;
+        padding: 8px 14px;
+        border-radius: 6px;
+      }
+
+      nav.nav-menu ul li:hover {
+        color: #a67c52;
+        background-color: #f4e9dd;
+      }
+
+      nav.nav-menu ul li a {
+        color: inherit;
+      }
+
+      .icon {
+        margin-left: 6px;
+        font-size: 10px;
+      }
+
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: #fffefc;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        min-width: 240px;
+        padding: 10px 0;
+        z-index: 999;
+      }
+
+      nav.nav-menu ul li:hover .dropdown-content {
+        display: block;
+      }
+
+      .dropdown-content a {
+        display: block;
+        padding: 10px 20px;
+        font-weight: 400;
+        color: #5a524c;
+      }
+
+      .dropdown-content a:hover {
+        background-color: #e3d3c0;
+        color: #a67c52;
+      }
+    }
+
+
+
+
+  </style>
+ <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-X0EV6PGCBV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-X0EV6PGCBV');
+</script>
+
+</head>
+<body>
+  <!-- Top Bar -->
+  <!-- <div class="top-bar">
+    <div class="left">
+   <div>
+  📞 <a href="tel:+919689220096">+91 9689220096</a> / <a href="tel:+919619293734">+91 9619293734</a>
+  &nbsp;&nbsp;📍  Pune-412308, Maharashtra, India
+</div>
+
+    </div>
+  </div> -->
+
+  <!-- Header -->
+<!-- Header -->
+<header class="main-header">
+  <div class="container">
+<a href="index.html" style="text-decoration: none; color: inherit;">
+<div class="logo">
+ <img src="images/FINAL_CROP_LOGO.png" alt="Meghrup Linen and Décor" style="height: 70px;width: 200px;" />
+</div>
+
+</a>
+
+
+    <!-- Mobile Toggle Button -->
+    <button class="sidebar-toggle" onclick="toggleSidebarMobile()">
+      <i class="fa fa-bars"></i>
+    </button>
+
+    <!-- Desktop Navigation -->
+    <nav class="nav-menu">
+
+<ul>
+         <li><a href="index.html">HOME</a></li>
+
+    <li><a href="about-meghrup.html">ABOUT</a></li>
+
+      
+              
+        <li>
+
+          <a href="hotel-bed-linens-luxury-bedsheets.html">BED LINENS<i class="fa-solid fa-chevron-down icon"></i></a>
+          <div class="dropdown-content">
+
+<a href="hotel-polycotton-bedsheets-supplier-pune.html">Polycotton Bedsheet</a>
+<a href="cotton-stripe-bedsheets-210tc-manufacturer-pune.html">Cotton Stripes Bedsheet 210 TC</a>
+<a href="cotton-stripe-bedsheets-300tc-supplier-pune.html">Cotton Stripes Bedsheet 300 TC</a>
+<a href="cotton-stripe-bedsheets-400tc-manufacturer.html">Cotton Stripes Bedsheet 400 TC</a>
+<a href="plain-cotton-bedsheets-210tc-manufacturer-pune.html">Plain Cotton Bedsheet (210 TC)</a>
+<a href="plain-cotton-bedsheets-300tc-supplier-pune.html">Plain Cotton Bedsheet (300 TC)</a>
+<a href="plain-cotton-bedsheets-400tc-manufacturer.html">Plain Cotton Bedsheet (400 TC)</a>
+<a href="colour-striped-cotton-bedsheets-supplier.html">Colour Stripes Bedsheet</a>
+<a href="printed-polycotton-bedsheets-supplier.html">Printed Bedsheet</a>
+
+          </div>
+        </li>
+        <li>
+              <a href="hotel-pillow-covers-wholesaler-pune.html">PILLOW COVERS<i class="fa-solid fa-chevron-down icon"></i> </a>
+          <div class="dropdown-content">
+<a href="polycotton-pillow-cover-supplier.html">Polycotton Pillow Cover </a>
+<a href="cotton-striped-pillow-cover-210tc-supplier.html">Cotton Stripes Pillow Cover 210 TC </a>
+<a href="cotton-striped-pillow-cover-300tc-supplier.html">Cotton Stripes Pillow Cover 300 TC </a>
+
+<a href="cotton-striped-pillow-cover-400tc-supplier.html">Cotton Stripes Pillow Cover 400 TC</a>
+<a href="plain-cotton-pillow-cover-210tc-supplier.html">Plain Cotton Pillow Cover 210 TC </a>
+
+<a href="plain-cotton-pillow-cover-300tc-supplier.html">Plain Cotton Pillow Cover 300 TC </a>
+<a href="plain-cotton-pillow-cover-400tc-supplier.html">Plain Cotton Pillow Cover 400 TC </a>
+<a href="colour-striped-pillow-cover-supplier.html">Colour Stripes Pillow Cover</a>
+<a href="printed-pillow-cover-supplier.html">Printed Pillow Cover</a>
+
+           
+
+          </div>
+        </li>
+        <li>
+             <a href="hotel-duet-comforter-supplier.html">DUET & COMFORTER <i class="fa-solid fa-chevron-down icon"></i></a>
+       <div class="dropdown-content">
+<a href="single-duet-comforter-supplier.html">Single Duet / Comforters</a>
+<a href="double-duet-comforter-supplier.html">Double Duet / Comforters</a>
+<a href="hotel-duet-bed-protector-supplier.html">Duets & Protectors</a>
+          </div>
+        </li>
+        <li>
+          <a href="hotel-bath-towel-supplier.html">BATH TOWEL<i class="fa-solid fa-chevron-down icon"></i></a>
+          <div class="dropdown-content">
+<a href="hotel-bath-towel-regular-supplier.html">Bath Towel – Regular (30×60)</a>
+<a href="hotel-premium-bath-towel-425gsm-supplier.html">Bath Towel – 425 GSM (30×60)</a>
+<a href="hotel-premium-bath-towel-500gsm-supplier.html">Bath Towel – 500 GSM (30×60)</a>
+<a href="hotel-premium-bath-towel-550gsm-supplier.html">Bath Towel – 550 GSM (30×60)</a>
+<a href="hotel-luxury-bath-towel-600gsm-supplier.html">Bath Towel – 600 GSM (30×60)</a>
+<a href="pure-cotton-hotel-towel-supplier.html">100% Pure Cotton Towel</a>
+<a href="hotel-towels-mats-supplier.html">Towels & Mats</a>
+          </div>
+        </li>
+        <li>
+          <a href="other-products.html">OTHERS<i class="fa-solid fa-chevron-down icon"></i></a>
+          <div class="dropdown-content">
+<a href="bonded-supersoft-mattress-supplier.html">Bonded Supersoft Mattress</a>
+<a href="hotel-spring-mattress-supplier.html">Spring Mattress</a>
+<a href="blackout-curtain-supplier.html">Curtains - blackout</a>
+<a href="printed-curtain-supplier.html">Curtains – Printed</a><a href="hotel-hand-towel-supplier.html">Hand Towels</a>
+        <a href="hotel-face-towel-supplier.html">Face Towels</a>
+        <a href="hotel-pool-towel-supplier.html">Pool Towels</a>
+        <a href="hotel-shower-curtains-supplier.html">Shower Curtains</a>
+          </div>
+        </li>
+        <li><a href="contact-meghrup.html">CONTACT</a></li>
+
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div id="breadcrumb-placeholder"></div>
+
+<script>
+fetch("breadcrumb.html")
+.then(res => res.text())
+.then(data => {
+
+  document.getElementById("breadcrumb-placeholder").innerHTML = data;
+
+  const container = document.getElementById("breadcrumb-container");
+
+  const path = window.location.pathname.split("/").pop();
+
+  const formatName = (name)=>{
+      return name
+      .replace(".html","")
+      .replace(/_/g," ")
+      .replace(/\b\w/g,l=>l.toUpperCase());
+  }
+
+  const crumbs=[];
+
+  // HOME
+  crumbs.push({
+    name:"Home",
+    link:"index.html"
+  });
+
+  // CATEGORY DETECTION
+  if(path.includes("_details_")){
+    const category = path.split("_details_")[0] + ".html";
+
+    crumbs.push({
+      name:formatName(category),
+      link:category
+    });
+  }
+
+  // PRODUCT TITLE
+  const title=document.querySelector(".product-title");
+
+  if(title){
+     crumbs.push({
+       name:title.textContent.trim()
+     });
+  }
+  else if(path !== "index.html"){
+     crumbs.push({
+       name:formatName(path)
+     });
+  }
+
+  // CREATE BREADCRUMB
+  crumbs.forEach((item,index)=>{
+
+    if(index>0){
+      const sep=document.createElement("span");
+      sep.textContent=" / ";
+      container.appendChild(sep);
+    }
+
+    if(item.link){
+      const a=document.createElement("a");
+      a.href=item.link;
+      a.textContent=item.name;
+      container.appendChild(a);
+    }
+    else{
+      const span=document.createElement("span");
+      span.textContent=item.name;
+      container.appendChild(span);
+    }
+
+  });
+
+});
+</script>
+
+  <!-- Sidebar for Mobile -->
+<div class="mobile-sidebar" id="mobileSidebar">
+  <div class="close-btn" onclick="toggleSidebarMobile()">×</div>
+
+
+ <img src="images/FINAL_CROP_LOGO.png" alt="Meghrup Logo" style="max-width: 140px; margin-bottom: 40px;">
+  <ul>
+     <li><a href="index.html"><i class="fa fa-home"></i> Home</a></li>
+    <li><a href="about-meghrup.html"><i class="fa fa-info-circle"></i> About Us</a></li>
+
+
+    <li>
+      <a href="hotel-bed-linens-luxury-bedsheets.html" onclick="toggleDropdownMobile('drop1', event)">Bed Linens <i class="fa fa-chevron-down"></i></a>
+      <div class="dropdown-mobile" id="drop1">
+<a href="hotel-polycotton-bedsheets-supplier-pune.html">Polycotton Bedsheet</a>
+<a href="cotton-stripe-bedsheets-210tc-manufacturer-pune.html">Cotton Stripes Bedsheet 210 TC</a>
+<a href="cotton-stripe-bedsheets-300tc-supplier-pune.html">Cotton Stripes Bedsheet 300 TC</a>
+<a href="cotton-stripe-bedsheets-400tc-manufacturer.html">Cotton Stripes Bedsheet 400 TC</a>
+<a href="plain-cotton-bedsheets-210tc-manufacturer-pune.html">Plain Cotton Bedsheet (210 TC)</a>
+<a href="plain-cotton-bedsheets-300tc-supplier-pune.html">Plain Cotton Bedsheet (300 TC)</a>
+<a href="plain-cotton-bedsheets-400tc-manufacturer.html">Plain Cotton Bedsheet (400 TC)</a>
+<a href="colour-striped-cotton-bedsheets-supplier.html">Colour Stripes Bedsheet</a>
+<a href="printed-polycotton-bedsheets-supplier.html">Printed Bedsheet</a>
+      </div>
+    </li>
+
+    <li>
+      <a href="hotel-pillow-covers-wholesaler-pune.html" onclick="toggleDropdownMobile('drop2', event)">Pillow Covers<i class="fa fa-chevron-down"></i></a>
+      <div class="dropdown-mobile" id="drop2">
+        
+<a href="polycotton-pillow-cover-supplier.html">Polycotton Pillow Cover </a>
+<a href="cotton-striped-pillow-cover-210tc-supplier.html">Cotton Stripes Pillow Cover 210 TC </a>
+<a href="cotton-striped-pillow-cover-300tc-supplier.html">Cotton Stripes Pillow Cover 300 TC </a>
+
+<a href="cotton-striped-pillow-cover-400tc-supplier.html">Cotton Stripes Pillow Cover 400 TC</a>
+<a href="plain-cotton-pillow-cover-210tc-supplier.html">Plain Cotton Pillow Cover 210 TC </a>
+
+<a href="plain-cotton-pillow-cover-300tc-supplier.html">Plain Cotton Pillow Cover 300 TC </a>
+<a href="plain-cotton-pillow-cover-400tc-supplier.html">Plain Cotton Pillow Cover 400 TC </a>
+<a href="colour-striped-pillow-cover-supplier.html">Colour Stripes Pillow Cover</a>
+<a href="printed-pillow-cover-supplier.html">Printed Pillow Cover</a>
+
+        
+       
+      </div>
+    </li>
+
+    <li>
+      <a href="hotel-duet-comforter-supplier.html" onclick="toggleDropdownMobile('drop3', event)">Duets & Comforters<i class="fa fa-chevron-down"></i></a>
+      <div class="dropdown-mobile" id="drop3">
+<a href="single-duet-comforter-supplier.html">Single Duet / Comforters</a>
+<a href="double-duet-comforter-supplier.html">Double Duet / Comforters</a>
+<a href="hotel-duet-bed-protector-supplier.html">Duets & Protectors</a>
+
+      </div>
+    </li>
+
+    <li>
+      <a href="hotel-bath-towel-supplier.html" onclick="toggleDropdownMobile('drop4', event)">Bath Towels <i class="fa fa-chevron-down"></i></a>
+      <div class="dropdown-mobile" id="drop4">
+<a href="hotel-bath-towel-regular-supplier.html">Bath Towel – Regular (30×60)</a>
+<a href="hotel-premium-bath-towel-425gsm-supplier.html">Bath Towel – 425 GSM (30×60)</a>
+<a href="hotel-premium-bath-towel-500gsm-supplier.html">Bath Towel – 500 GSM (30×60)</a>
+<a href="hotel-premium-bath-towel-550gsm-supplier.html">Bath Towel – 550 GSM (30×60)</a>
+<a href="hotel-luxury-bath-towel-600gsm-supplier.html">Bath Towel – 600 GSM (30×60)</a>
+<a href="pure-cotton-hotel-towel-supplier.html">100% Pure Cotton Towel</a>
+<a href="hotel-towels-mats-supplier.html">Towels & Mats</a>
+
+
+      </div>
+    </li>
+
+    <li>
+      <a href="other-products.html" onclick="toggleDropdownMobile('drop5', event)">Others <i class="fa fa-chevron-down"></i></a>
+   
+             <div class="dropdown-mobile" id="drop5">
+        <a href="bonded-supersoft-mattress-supplier.html">Bonded Supersoft Mattress</a>
+<a href="hotel-spring-mattress-supplier.html">Spring Mattress</a>
+<a href="blackout-curtain-supplier.html">Curtains - blackout</a>
+<a href="printed-curtain-supplier.html">Curtains – Printed</a>
+       <a href="hotel-hand-towel-supplier.html">Hand Towels</a>
+        <a href="hotel-face-towel-supplier.html">Face Towels</a>
+        <a href="hotel-pool-towel-supplier.html">Pool Towels</a>
+        <a href="hotel-shower-curtains-supplier.html">Shower Curtains</a>
+      </div>
+ 
+    </li>
+
+   
+    <li><a href="contact-meghrup.html"><i class="fa fa-phone"></i> Contact</a></li>
+  </ul>
+</div>
+
+
+  <script>
+    function toggleSidebarMobile() {
+      const sidebar = document.getElementById('mobileSidebar');
+      sidebar.classList.toggle('active');
+    }
+
+    function toggleDropdownMobile(id, event) {
+      event.preventDefault();
+      const dropdown = document.getElementById(id);
+      const all = document.querySelectorAll('.dropdown-mobile');
+      all.forEach(el => {
+        if (el !== dropdown) el.classList.remove('open');
+      });
+      dropdown.classList.toggle('open');
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      gsap.from(".top-bar", { y: -30, opacity: 0, duration: 1, ease: "power3.out" });
+      gsap.from(".main-header", { y: -60, opacity: 0, duration: 1.2, delay: 0.2, ease: "power3.out" });
+      gsap.from("nav.nav-menu li", {
+        y: -25, scale: 0.95, rotation: -2, opacity: 0,
+        duration: 1.1, delay: 0.5,
+        stagger: { each: 0.1 },
+        ease: "elastic.out(1, 0.5)"
+      });
+
+      const dropdowns = document.querySelectorAll(".dropdown-content");
+      dropdowns.forEach(dropdown => {
+        const parent = dropdown.closest("li");
+        parent.addEventListener("mouseenter", () => {
+          gsap.killTweensOf(dropdown);
+          dropdown.style.display = "block";
+          gsap.fromTo(dropdown, { y: -10, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: "power2.out" });
+        });
+        parent.addEventListener("mouseleave", () => {
+          gsap.to(dropdown, {
+            y: -10, opacity: 0, duration: 0.3, ease: "power2.in",
+            onComplete: () => dropdown.style.display = "none"
+          });
+        });
+      });
+    });
+  </script>
+
+	
+<section class="inquiry-section">
+
+  <div class="inquiry-box">
+    <h2>Get a Quote</h2>
+
+    <form>
+      <input type="text" placeholder="Full Name" required>
+      <input type="email" placeholder="Email Address" required>
+      <input type="tel" placeholder="Mobile Number" required>
+
+      <input type="text" placeholder="Get a Quote Request">
+
+      <textarea placeholder="Tell us about your requirement..."></textarea>
+
+      <button type="submit">Submit Request</button>
+    </form>
+  </div>
+
+</section>
+
+
+<style>
+	* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #fef9f4, #fceee3);
+}
+
+/* 🔷 SECTION */
+.inquiry-section {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 🔷 FORM BOX */
+.inquiry-box {
+  width: 100%;
+  max-width: 500px;
+  background: #1f1f1f;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+.inquiry-box h2 {
+  color: #fff;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+/* INPUTS */
+.inquiry-box input,
+.inquiry-box textarea {
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 15px;
+  border-radius: 30px;
+  border: none;
+  outline: none;
+  background: #333;
+  color: #fff;
+  font-size: 14px;
+}
+
+/* TEXTAREA */
+.inquiry-box textarea {
+  border-radius: 15px;
+  height: 120px;
+  resize: none;
+}
+
+/* FOCUS EFFECT */
+.inquiry-box input:focus,
+.inquiry-box textarea:focus {
+  border: 2px solid #ff7a00;
+}
+
+/* BUTTON */
+.inquiry-box button {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 30px;
+  background: #ff7a00;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.inquiry-box button:hover {
+  background: #e66b00;
+  transform: translateY(-2px);
+}
+
+/* 🔥 FLOATING BUTTON */
+.floating-btn {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  background: #ff7a00;
+  color: white;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  transition: 0.3s;
+  z-index: 999;
+}
+
+/* HOVER */
+.floating-btn:hover {
+  transform: scale(1.1);
+  background: #e66b00;
+}
+
+/* 🔥 PULSE ANIMATION */
+.floating-btn::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: #ff7a00;
+  animation: pulse 1.5s infinite;
+  z-index: -1;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.7; }
+  70% { transform: scale(1.5); opacity: 0; }
+  100% { opacity: 0; }
+}
+</style>
+
+
+<!-- Footer Section -->
+<!-- <div style="background: linear-gradient(135deg, #000000, #222222, #000000);padding: 40px 20px; font-family: 'Poppins', sans-serif; position: relative; overflow: hidden;"> -->
+  <div style="background: linear-gradient(135deg, #3e1f0d, #8b5e3c, #3e1f0d); padding: 40px 20px; font-family: 'Poppins', sans-serif; position: relative; overflow: hidden; text-transform: capitalize;">
+    <!-- Background pattern -->
+    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('https://www.transparenttextures.com/patterns/hexellence.png'); opacity: 0.05; background-size: 200px; z-index: 0;"></div>
+
+    <!-- Footer Content -->
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; position: relative; z-index: 1; max-width: 1200px; margin: 0 auto;">
+      <!-- Column 1 - Logo & About -->
+      <div style="flex: 1 1 250px; padding: 10px;">
+        <div style="font-size: 24px; font-weight: 700; color: #fff; line-height: 1.2; text-shadow: 1px 1px 2px rgba(0,0,0,0.3);">
+          Meghrup Linen<br>
+          <span style="font-size: 18px; font-weight: 500; color: #f8e4db;">And Décor</span>
+        </div>
+        <p style="color: whitesmoke; font-size: 14px; line-height: 1.6; margin-top: 10px;">
+          Meghrup Linen & Décor offers premium hotel and home linen with unmatched softness,
+        
+          durability and style.
+        </p>
+      </div>
+
+      <!-- Column 2 - Help & Info -->
+      <div style="flex: 1 1 200px; padding: 10px;">
+        <h3 style="margin-bottom: 10px; font-size: 18px; font-weight: 600; color: #fff;">Our Products</h3>
+        <ul style="list-style: disc; padding-left: 20px; color: whitesmoke; font-size: 15px;">
+          <li><a href="hotel-bed-linens-luxury-bedsheets.html" style="color: whitesmoke; text-decoration: none;">Hotel Bed Linens</a></li>
+          <li><a href="hotel-pillows-cushions-supplier.html" style="color: whitesmoke; text-decoration: none;">Pillow & Cushions</a></li>
+          <li><a href="hotel-duet-bed-protector-supplier.html" style="color: whitesmoke; text-decoration: none;">Duets & Protectors</a></li>
+          <li><a href="hotel-towels-mats-supplier.html" style="color: whitesmoke; text-decoration: none;">Hotel Towels & Mats</a></li>
+          <li><a href="hotel-duet-comforter-supplier.html" style="color: whitesmoke; text-decoration: none;">Duets & Comforters</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 3 - Quick Links -->
+      <div style="flex: 1 1 180px; padding: 10px;">
+        <h3 style="margin-bottom: 10px; font-size: 18px; font-weight: 600; color: #fff;">Quick Links</h3>
+        <ul style="list-style: none; padding-left: 0; font-size: 15px; line-height: 1.6;">
+          <li><a href="index.html" style="color: whitesmoke; text-decoration: none;">Home</a></li>
+           <li><a href="about-meghrup.html" style="color: whitesmoke; text-decoration: none;">About Us</a></li>
+          <li><a href="contact-meghrup.html" style="color: whitesmoke; text-decoration: none;">Contact Us</a></li>
+          <li><a href="hotel-bath-towel-supplier.html" style="color: whitesmoke; text-decoration: none;">Hotel Bath towels</a></li>
+          <li><a href="other-products.html" style="color: whitesmoke; text-decoration: none;">Others</a></li>
+         
+        </ul>
+      </div>
+
+      <!-- Column 4 - Contact Info -->
+      <div style="flex: 1 1 250px; padding: 10px;">
+        <h3 style="margin-bottom: 10px; font-size: 18px; font-weight: 600; color: #fff;">Contact Info</h3>
+        <ul style="list-style: none; padding-left: 0; font-size: 15px; color: whitesmoke; line-height: 1.8;">
+
+            <li>
+            <i class="fa-solid fa-location-dot" style="margin-right: 8px;"></i>
+      <span style="color: whitesmoke;">
+    Ganesh Nagar, Saswad Road,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    Near Railway Flyover Bridge,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    Fursungi, Pune 412308
+  </span>
+
+          </li>
+
+          <li>
+            <i class="fa-solid fa-phone" style="margin-right: 8px;"></i>
+            <a href="tel:+919146428456" style="text-decoration: none; color: whitesmoke;">+91 9146428456</a> /
+            <a href="tel:+919619293734" style="text-decoration: none; color: whitesmoke;">+91 9619293734</a>
+          </li>
+          <li>
+            <i class="fa-solid fa-envelope" style="margin-right: 8px;"></i>
+            <a href="mailto:meghruplinen@gmail.com" style="text-decoration: none; color: whitesmoke; text-transform: lowercase;">meghruplinen@gmail.com</a>
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+
+    <!-- Social Icons -->
+    <div style="text-align: center; margin-top: 20px; z-index: 1; position: relative;">
+      <a href="https://www.facebook.com/people/Meghrup-Linen-Decor/61550862792869/?mibextid=LQQJ4d&rdid=C3fUnIgBhQmAQfzE&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F16iMsrMCgv%2F%3Fmibextid%3DLQQJ4d" target="_blank" style="margin: 0 10px;"><img src="https://cdn-icons-png.flaticon.com/24/733/733547.png" alt="Facebook"></a>
+      <a href="https://www.instagram.com/meghruplinen?igsh=MWtsdXdhODQ4ZHZsbw==" target="_blank" style="margin: 0 10px;"><img src="https://cdn-icons-png.flaticon.com/24/2111/2111463.png" alt="Instagram"></a>
+      <a href="https://wa.me/9689220096?text=Hello%2C%20I%20am%20interested%20in%20your%20Products." target="_blank" style="margin: 0 10px;"><img src="https://cdn-icons-png.flaticon.com/24/733/733585.png" alt="WhatsApp"></a>
+    </div>
+
+    <!-- Copyright -->
+    <div style="text-align: center; margin-top: 25px; font-size: 14px; color: #fff; z-index: 1; position: relative;">
+    <p>© <span id="year"></span> Meghrup Linen & Décor. All rights reserved.</p>
+      <div style="margin-top: 5px;"><a href="https://mindaxisinnovation.com/" target="_blank" rel="noopener noreferrer" style="color: whitesmoke; text-decoration: none;" onmouseover="this.style.color='#ffb700'; this.style.textDecoration='underline';" onmouseout="this.style.color='whitesmoke'; this.style.textDecoration='none';">Developed By MindAxis Innovation Pvt Ltd.</a></div>
+    </div>
+  </div>
+
+<!-- Font Awesome for icons -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js"></script>
+
+<script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+
+<!-- 🔥 FLOATING BUTTON -->
+<a href="inquiry.html" class="floating-btn">
+  <i class="fa fa-envelope"></i>
+</a>
+
+
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</body>
+</html>

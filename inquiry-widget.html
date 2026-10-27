@@ -1,0 +1,232 @@
+<!-- FLOATING BUTTON -->
+<a href="contact-meghrup.html#contact" id="inquiry-button">
+<i class="fa-solid fa-headset"></i>
+<span>Inquiry</span>
+</a>
+
+<!-- POPUP FORM -->
+<!-- <div id="inquiry-modal">
+
+<div class="inquiry-box">
+
+<span id="close-inquiry">&times;</span>
+
+<h3>Product Inquiry</h3>
+
+<form id="whatsapp-form">
+
+<input type="text" id="inq-name" placeholder="Your Name" required>
+
+<input type="tel" id="inq-phone" placeholder="Mobile Number" required>
+
+<input type="text" id="inq-product" placeholder="Product Name">
+
+<textarea id="inq-message" placeholder="Your Message"></textarea>
+
+<button type="submit">Send on WhatsApp</button>
+
+</form>
+
+</div>
+
+</div> -->
+
+
+<style>
+	/* Floating Button */
+html{
+  scroll-behavior: smooth;
+}
+
+#contact{
+  scroll-margin-top: 1px;
+}
+
+#inquiry-button{
+position:fixed;
+bottom:30px;
+left:30px;
+background:#a67c52;
+color:#fff;
+padding:12px 18px;
+border-radius:50px;
+display:flex;
+align-items:center;
+gap:8px;
+font-size:15px;
+cursor:pointer;
+box-shadow:0 10px 25px rgba(0,0,0,0.25);
+z-index:9999;
+transition:0.3s;
+pointer-events: auto;
+}
+
+#inquiry-button:hover{
+transform:translateY(-3px);
+}
+
+/* Popup */
+
+#inquiry-modal{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.6);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:9999;
+}
+
+#inquiry-button{
+animation:pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes pulse{
+0%, 100%{
+  transform: scale(1);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25), 0 0 0 0 rgba(166,124,82,0.7);
+}
+50%{
+  transform: scale(1.08);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.3), 0 0 0 14px rgba(166,124,82,0);
+}
+}
+
+.inquiry-box{
+background:#fff;
+padding:30px;
+border-radius:12px;
+width:350px;
+max-width:90%;
+position:relative;
+animation:popupAnim .3s ease;
+}
+
+@keyframes popupAnim{
+from{
+transform:scale(.8);
+opacity:0;
+}
+to{
+transform:scale(1);
+opacity:1;
+}
+}
+
+#close-inquiry{
+position:absolute;
+right:15px;
+top:10px;
+font-size:24px;
+cursor:pointer;
+}
+
+/* Form */
+
+#whatsapp-form input,
+#whatsapp-form textarea{
+width:100%;
+padding:12px;
+margin-bottom:12px;
+border:1px solid #ddd;
+border-radius:6px;
+font-size:14px;
+}
+
+#whatsapp-form textarea{
+height:80px;
+resize:none;
+}
+
+#whatsapp-form button{
+width:100%;
+padding:12px;
+border:none;
+background:#25D366;
+color:#fff;
+font-size:15px;
+border-radius:6px;
+cursor:pointer;
+}
+
+#whatsapp-form button:hover{
+background:#1ebe5d;
+}
+
+
+#contact-form:target {
+  animation: highlight 1s ease;
+}
+
+@keyframes highlight {
+  0% { box-shadow: 0 0 0 0 rgba(166,124,82,0.6); }
+  100% { box-shadow: 0 0 20px 10px rgba(166,124,82,0); }
+}
+
+
+</style>
+
+<!-- <script>
+document.addEventListener("DOMContentLoaded", function(){
+
+const inquiryBtn = document.getElementById("inquiry-button");
+const inquiryModal = document.getElementById("inquiry-modal");
+const closeInquiry = document.getElementById("close-inquiry");
+
+/* OPEN POPUP */
+inquiryBtn.addEventListener("click", function(){
+  inquiryModal.style.display = "flex";
+});
+
+/* CLOSE POPUP */
+closeInquiry.addEventListener("click", function(){
+  inquiryModal.style.display = "none";
+});
+
+/* CLOSE ON OUTSIDE CLICK */
+window.addEventListener("click", function(e){
+  if(e.target === inquiryModal){
+    inquiryModal.style.display = "none";
+  }
+});
+
+/* AUTO PRODUCT NAME */
+const productTitle = document.querySelector(".product-title");
+
+if(productTitle){
+  document.getElementById("inq-product").value = productTitle.textContent;
+}
+
+/* SEND TO WHATSAPP */
+
+document.getElementById("whatsapp-form").addEventListener("submit", function(e){
+
+  e.preventDefault();
+
+  const name = document.getElementById("inq-name").value;
+  const phone = document.getElementById("inq-phone").value;
+  const product = document.getElementById("inq-product").value;
+  const message = document.getElementById("inq-message").value;
+
+  const text = `New Inquiry from Website
+
+Name: ${name}
+Phone: ${phone}
+Product: ${product}
+Message: ${message}`;
+
+  const whatsapp = "https://wa.me/919689220096?text=" + encodeURIComponent(text);
+
+  window.open(whatsapp, "_blank");
+
+  inquiryModal.style.display = "none";
+
+  this.reset();
+
+});
+
+});
+</script> -->

@@ -1,0 +1,29 @@
+RewriteEngine On
+
+# ==========================
+
+# FORCE HTTPS + REMOVE WWW
+
+# ==========================
+
+RewriteCond %{HTTPS} off [OR]
+RewriteCond %{HTTP_HOST} ^[www.meghruplinen.com$](http://www.meghruplinen.com$) [NC]
+RewriteRule ^(.*)$ https://meghruplinen.com/$1 [R=301,L]
+
+# ==========================
+
+# ALLOW EXISTING FILES/FOLDERS
+
+# ==========================
+
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# ==========================
+
+# REDIRECT INVALID URLS TO HOME
+
+# ==========================
+
+RewriteRule ^.*$ https://meghruplinen.com/ [R=301,L]
